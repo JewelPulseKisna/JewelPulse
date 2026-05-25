@@ -1187,14 +1187,6 @@
         <input type="search" id="q" placeholder="Search all brands…" oninput="renderAll()" autocomplete="off"
           spellcheck="false" />
       </div>
-      <div class="pills">
-        <button class="pill on" onclick="setFilter('all',this)">All</button>
-        <button class="pill" onclick="setFilter('biz',this)">📈 Biz</button>
-        <button class="pill" onclick="setFilter('launch',this)">🚀 Launch</button>
-        <button class="pill" onclick="setFilter('offer',this)">🏷 Offers</button>
-        <button class="pill" onclick="setFilter('collab',this)">🤝 Collab</button>
-        <button class="pill" onclick="setFilter('award',this)">🏆 Award</button>
-      </div>
     </div>
 
     <div class="grid" id="grid"></div>
@@ -1685,7 +1677,6 @@
   <div class="stabs">
     <button class="stab on" id="stab-news-${b.id}"     onclick="showSection('${b.id}','news')">📰 News</button>
     <button class="stab"    id="stab-announce-${b.id}" onclick="showSection('${b.id}','announce')">📣 Announcements</button>
-    <button class="stab"    id="stab-offers-${b.id}"   onclick="showSection('${b.id}','offers')">🏷 Offers</button>
   </div>
   <div id="sec-news-${b.id}">
     <div id="news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
@@ -1693,9 +1684,6 @@
   <div id="sec-announce-${b.id}" style="display:none">
     <div id="nse-${b.id}"><div class="nse-ph"><div class="spinner"></div>Loading NSE…</div></div>
     <div id="ann-news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
-  </div>
-  <div id="sec-offers-${b.id}" style="display:none">
-    <div id="offers-${b.id}"><div class="state"><div class="spinner"></div></div></div>
   </div>
 </div>`;
     }
