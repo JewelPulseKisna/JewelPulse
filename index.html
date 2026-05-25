@@ -1675,13 +1675,13 @@
     </div>
   </div>
   <div class="stabs">
-    <button class="stab on" id="stab-news-${b.id}"     onclick="showSection('${b.id}','news')">📰 News</button>
-    <button class="stab"    id="stab-announce-${b.id}" onclick="showSection('${b.id}','announce')">📣 Announcements</button>
+    <button class="stab" id="stab-news-${b.id}"     onclick="showSection('${b.id}','news')">📰 News</button>
+    <button class="stab on"    id="stab-announce-${b.id}" onclick="showSection('${b.id}','announce')">📣 Announcements</button>
   </div>
-  <div id="sec-news-${b.id}">
+  <div id="sec-news-${b.id}" style="display:none">
     <div id="news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
   </div>
-  <div id="sec-announce-${b.id}" style="display:none">
+  <div id="sec-announce-${b.id}">
     <div id="nse-${b.id}"><div class="nse-ph"><div class="spinner"></div>Loading NSE…</div></div>
     <div id="ann-news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
   </div>
@@ -1917,7 +1917,7 @@
     /* ── INIT ── */
     (function () {
       BRANDS = [...DEFAULT_BRANDS, ...loadAdded()];
-      BRANDS.forEach(b => { activeSection[b.id] = 'news'; expanded[b.id] = false; activeCat[b.id] = 'all'; });
+      BRANDS.forEach(b => { activeSection[b.id] = 'announce'; expanded[b.id] = false; activeCat[b.id] = 'all'; });
       document.getElementById('grid').innerHTML = BRANDS.map((b, i) => buildCardHTML(b, i)).join('');
       setTimeout(maybeShowIOSHint, 2500);
       fetchAll();
