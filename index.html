@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║           JewelPulse — Jewellery Intelligence Dashboard      ║
+  ║                                                              ║
+  ║  © 2025 Samyak Chheda. All Rights Reserved.                 ║
+  ║  Conceived, designed and built by Samyak Chheda.            ║
+  ║                                                              ║
+  ║  Unauthorized copying, redistribution, modification or      ║
+  ║  commercial use of this software is strictly prohibited     ║
+  ║  without prior written permission from the author.          ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
 <html lang="en">
 
 <head>
@@ -808,6 +820,70 @@
       background: var(--surface);
     }
 
+    /* OFFERS LINK BAR */
+    .brand-offers-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 13px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--gold-dark);
+      background: var(--gold-pale);
+      border-top: 1px solid rgba(184,134,11,0.15);
+      text-decoration: none;
+      transition: all .18s;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-offers-link:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .brand-offers-link::after {
+      content: '→';
+      font-size: 13px;
+      transition: transform .18s;
+    }
+
+    .brand-offers-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    /* FOOTER */
+    .jp-footer {
+      text-align: center;
+      padding: 20px 16px 28px;
+      font-size: 10.5px;
+      color: var(--ink-4);
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--border-2);
+      margin-top: 4px;
+      line-height: 1.8;
+    }
+
+    .jp-footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .jp-footer-sep {
+      margin: 0 7px;
+      opacity: 0.35;
+    }
+
+    .jp-footer-sub {
+      display: block;
+      font-size: 9.5px;
+      color: var(--ink-4);
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
     /* OFFER ITEM */
     .offer-item {
       padding: 9px 13px;
@@ -1260,10 +1336,22 @@
 
     const DEFAULT_BRANDS = [
       {
-        id: 'tanishq', name: 'Tanishq', sub: 'CaratLane · Titan · Zoya',
-        color: '#B07A1A', avatar: 'T', nse: 'TITAN.NS',
+        id: 'kisna', name: 'KISNA', sub: 'Diamond & Gold Jewellery',
+        color: '#9B1B30', avatar: '💎', nse: null, offersUrl: 'https://www.kisna.com/',
         queries: [
-          { key: 'all', label: 'All', q: 'Tanishq OR CaratLane jewellery India news' },
+          { key: 'all', label: 'All', q: 'KISNA jewellery', days: 45 },
+          { key: 'biz', label: 'Business', q: 'KISNA jewellery business expansion India' },
+          { key: 'launch', label: 'Launches', q: `KISNA jewellery new collection launch ${CY}` },
+          { key: 'offer', label: 'Offers', q: 'KISNA jewellery offer discount sale India' },
+          { key: 'scheme', label: 'Schemes', q: 'KISNA jewellery gold diamond scheme plan India' },
+          { key: 'collab', label: 'Collabs', q: 'KISNA jewellery celebrity ambassador partnership' },
+        ]
+      },
+      {
+        id: 'tanishq', name: 'Tanishq', sub: 'CaratLane · Titan · Zoya',
+        color: '#B07A1A', avatar: 'T', nse: 'TITAN.NS', offersUrl: 'https://www.tanishq.co.in/offers',
+        queries: [
+          { key: 'all', label: 'All', q: 'Tanishq jewellery India news' },
           { key: 'biz', label: 'Business', q: 'Tanishq Titan financial results revenue store expansion India' },
           { key: 'launch', label: 'Launches', q: `Tanishq new collection launch jewellery ${CY}` },
           { key: 'offer', label: 'Offers', q: 'Tanishq offer scheme discount sale jewellery India' },
@@ -1273,7 +1361,7 @@
       },
       {
         id: 'kalyan', name: 'Kalyan Jewellers', sub: 'KJ · My Kalyan',
-        color: '#1D9E75', avatar: 'K', nse: 'KALYANKJIL.NS',
+        color: '#1D9E75', avatar: 'K', nse: 'KALYANKJIL.NS', offersUrl: 'https://www.kalyanjewellers.net/',
         queries: [
           { key: 'all', label: 'All', q: '"Kalyan Jewellers" news India' },
           { key: 'biz', label: 'Business', q: '"Kalyan Jewellers" revenue results store expansion' },
@@ -1285,9 +1373,9 @@
       },
       {
         id: 'png', name: 'PNG Jewellers', sub: 'P.N. Gadgil & Sons',
-        color: '#6C63D4', avatar: 'P', nse: 'PNGJL.NS',
+        color: '#6C63D4', avatar: 'P', nse: 'PNGJL.NS', offersUrl: 'https://www.pngjewellers.com/',
         queries: [
-          { key: 'all', label: 'All', q: '"PNG Jewellers" OR "P N Gadgil" OR "PN Gadgil" news India' },
+          { key: 'all', label: 'All', q: '"PN Gadgil" jewellers India news' },
           { key: 'biz', label: 'Business', q: '"PNG Jewellers" "P N Gadgil" IPO results revenue expansion' },
           { key: 'launch', label: 'Launches', q: `"PNG Jewellers" new collection launch ${CY}` },
           { key: 'offer', label: 'Offers', q: '"PNG Jewellers" offer scheme discount sale India' },
@@ -1297,9 +1385,10 @@
       },
       {
         id: 'pngreva', name: 'PNG Reva', sub: 'P.N. Gadgil Reva Line',
-        color: '#D4537E', avatar: 'R', nse: 'PNGSREVA.NS',
+        color: '#D4537E', avatar: 'R', nse: 'PNGSREVA.NS', offersUrl: 'https://www.revabypng.com/',
+        matchKw: ['gadgil', 'reva', 'png'],
         queries: [
-          { key: 'all', label: 'All', q: '"PNG Reva" OR "PN Gadgil Reva" jewellery India news' },
+          { key: 'all', label: 'All', q: '"PN Gadgil" jewellery news India' },
           { key: 'biz', label: 'Business', q: '"PNG Reva" expansion strategy store brand' },
           { key: 'launch', label: 'Launches', q: `"PNG Reva" launch collection new design ${CY}` },
           { key: 'offer', label: 'Offers', q: '"PNG Reva" offer scheme discount sale jewellery' },
@@ -1309,7 +1398,7 @@
       },
       {
         id: 'senco', name: 'Senco Gold', sub: 'Senco Gold & Diamonds',
-        color: '#BA7517', avatar: 'S', nse: 'SENCO.NS',
+        color: '#BA7517', avatar: 'S', nse: 'SENCO.NS', offersUrl: 'https://www.sencogoldanddiamonds.com/offers',
         queries: [
           { key: 'all', label: 'All', q: '"Senco Gold" news India' },
           { key: 'biz', label: 'Business', q: '"Senco Gold" results revenue IPO expansion' },
@@ -1321,7 +1410,7 @@
       },
       {
         id: 'malabar', name: 'Malabar Gold', sub: 'Malabar Gold & Diamonds',
-        color: '#2D9E3A', avatar: 'M', nse: null,
+        color: '#2D9E3A', avatar: 'M', nse: null, offersUrl: 'https://www.malabargoldanddiamonds.com/offers',
         queries: [
           { key: 'all', label: 'All', q: '"Malabar Gold" jewellery news India' },
           { key: 'biz', label: 'Business', q: '"Malabar Gold" expansion revenue stores international' },
@@ -1333,7 +1422,7 @@
       },
       {
         id: 'bluestone', name: 'BlueStone', sub: 'Online Fine Jewellery',
-        color: '#2278C4', avatar: 'B', nse: 'BLUESTONE.NS',
+        color: '#2278C4', avatar: 'B', nse: 'BLUESTONE.NS', offersUrl: 'https://www.bluestone.com/offers',
         queries: [
           { key: 'all', label: 'All', q: 'BlueStone jewellery India news' },
           { key: 'biz', label: 'Business', q: 'BlueStone jewellery IPO funding revenue valuation' },
@@ -1547,11 +1636,14 @@
       const up = parseFloat(d.chg) > 0, dn = parseFloat(d.chg) < 0;
       const cls = up ? 'nse-up' : dn ? 'nse-dn' : 'nse-flat';
       const arrow = up ? '▲' : dn ? '▼' : '—';
+      const symbol = d.ticker.replace('.NS', '');
+      const verifyUrl = `https://www.google.com/finance/quote/${symbol}:NSE`;
       el.innerHTML = `<div class="nse-row">
-        <span class="nse-label">NSE · ${d.ticker.replace('.NS', '')}</span>
+        <span class="nse-label">NSE · ${symbol}</span>
         <span class="nse-price">₹${d.price}</span>
         <span class="nse-chg ${cls}">${arrow} ${Math.abs(d.chg)} (${d.pct}%)</span>
         <span class="nse-time">as of ${d.time}</span>
+        <a href="${verifyUrl}" target="_blank" rel="noopener" style="font-size:9px;color:var(--gold-l);text-decoration:none;opacity:.75;white-space:nowrap;margin-left:6px;border:1px solid rgba(212,160,23,0.3);padding:1px 6px;border-radius:10px" title="Verify price on Google Finance">↗ Verify</a>
       </div>`;
     }
 
@@ -1609,15 +1701,14 @@
         return;
       }
 
-      const lim = expanded[id] ? items.length : 4;
+      const lim = 5;
       el.innerHTML = `<div class="nlist">` +
         items.slice(0, lim).map(item => `
         <div class="ni">
           <div class="ni-row"><div class="ni-title"><a href="${item.url}" target="_blank" rel="noopener">${item.title}</a></div>${getTag(item.title)}</div>
           <div class="ni-meta"><span class="ni-src">${item.source || 'News'}</span>${item.publishedAt ? `<span class="ni-dot"></span><span class="ni-time">${timeAgo(item.publishedAt)}</span>` : ''}</div>
         </div>`).join('') +
-        `</div>` +
-        (items.length > 4 ? `<button class="show-more" onclick="toggleExpand('${id}')">${expanded[id] ? '↑ Show less' : '↓ ' + (items.length - 4) + ' more'}</button>` : '');
+        `</div>`;
     }
 
     function renderAnnounce(id) {
@@ -1651,10 +1742,8 @@
     }
 
     function renderCard(id) {
-      const sec = activeSection[id] || 'news';
-      if (sec === 'news') renderNews(id);
-      else if (sec === 'announce') renderAnnounce(id);
-      else renderOffers(id);
+      renderNSE(id);
+      renderNews(id);
     }
 
     function renderAll() { renderMarket(); BRANDS.forEach(b => renderCard(b.id)); }
@@ -1680,18 +1769,36 @@
       <button class="btn-remove" onclick="removeBrand('${b.id}')">✕</button>
     </div>
   </div>
-  <div class="stabs">
-    <button class="stab" id="stab-news-${b.id}"     onclick="showSection('${b.id}','news')">📰 News</button>
-    <button class="stab on"    id="stab-announce-${b.id}" onclick="showSection('${b.id}','announce')">📣 Announcements</button>
-  </div>
-  <div id="sec-news-${b.id}" style="display:none">
-    <div id="news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
-  </div>
-  <div id="sec-announce-${b.id}">
-    <div id="nse-${b.id}"><div class="nse-ph"><div class="spinner"></div>Loading NSE…</div></div>
-    <div id="ann-news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
-  </div>
+  <div id="nse-${b.id}"><div class="nse-ph"><div class="spinner"></div>Loading…</div></div>
+  <div id="news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
+  ${b.offersUrl ? `<a href="${b.offersUrl}" target="_blank" rel="noopener" class="brand-offers-link">🏷️ View Latest Offers</a>` : ''}
 </div>`;
+    }
+
+    /* ── Brand relevance filter — only blocks obvious multi-brand list articles ── */
+    function filterBrandRelevant(items, brand) {
+      if (!Array.isArray(items)) return items;
+
+      // Use matchKw if defined (for brands whose query uses a different name)
+      const nameWords = brand.matchKw ||
+        brand.name.toLowerCase().split(' ').filter(w => w.length > 2);
+
+      const allBrands = [
+        'tanishq', 'kalyan', 'malabar', 'senco', 'bluestone', 'kisna',
+        'joyalukkas', 'caratlane', 'titan', 'tbz', 'orra',
+        'reliance', 'hazoorilal', 'waman', 'kirtilals', 'png', 'reva', 'gadgil'
+      ];
+      // Build competitor list excluding this brand's own keywords
+      const competitors = allBrands.filter(
+        b => !nameWords.some(w => b.includes(w) || w.includes(b))
+      );
+
+      return items.filter(item => {
+        const t = item.title.toLowerCase();
+        // Only reject if 3+ competitor brands appear — clear list/roundup article
+        const hits = competitors.filter(b => t.includes(b)).length;
+        return hits < 3;
+      });
     }
 
     async function fetchBrand(brand) {
@@ -1707,8 +1814,16 @@
       fetchNSE(id, brand.nse || null);
 
       const allQ = brand.queries.find(q => q.key === 'all');
-      const items = allQ ? await fetchRSS(allQ.q, 30) : 'ERROR';
-      results[id]['all'] = items;
+      let items = allQ ? await fetchRSS(allQ.q, 30) : 'ERROR';
+
+      // Fallback: if Bing returned nothing, retry with a simpler query (broader, 60 days)
+      if (Array.isArray(items) && items.length === 0) {
+        const fallbackQ = brand.name + ' jewellery India';
+        const fallback = await fetchRSS(fallbackQ, 60);
+        if (Array.isArray(fallback) && fallback.length > 0) items = fallback;
+      }
+
+      results[id]['all'] = filterBrandRelevant(items, brand);
 
       if (Array.isArray(items)) {
         offerData[id] = items.filter(isOffer);
@@ -1742,9 +1857,11 @@
     async function fetchAll() {
       setLive('loading');
       results = {}; nseData = {}; annData = {}; offerData = {}; mktItems = [];
-      totalDone = 0; totalTasks = 4;
+      // totalTasks = market(2) + metals(1) + each brand(1 each)
+      totalDone = 0; totalTasks = 3 + BRANDS.length;
       setProgress(0, totalTasks);
 
+      // Init all brand states + NSE in parallel
       BRANDS.forEach(b => {
         results[b.id] = {}; nseData[b.id] = undefined;
         annData[b.id] = undefined; offerData[b.id] = undefined;
@@ -1753,22 +1870,7 @@
         fetchNSE(b.id, b.nse || null);
       });
 
-      const annKw = /revenue|profit|ipo|fund|expan|financial|result|quarter|crore|lakh|nse|bse|store|open|appoint|partner|acquire|merger/;
-
-      function distribute(items, brands) {
-        const pool = Array.isArray(items) ? items : [];
-        brands.forEach(b => {
-          const kw = b.name.split(' ')[0].toLowerCase();
-          const matched = pool.filter(x => x.title.toLowerCase().includes(kw));
-          const allItems = matched.length ? matched : (pool.length ? pool.slice(0, 5) : (items === 'ERROR' ? 'ERROR' : []));
-          results[b.id]['all'] = allItems;
-          offerData[b.id] = Array.isArray(allItems) ? allItems.filter(isOffer) : allItems;
-          annData[b.id]   = Array.isArray(allItems) ? (allItems.filter(x => annKw.test(x.title.toLowerCase())) || allItems.slice(0,5)) : allItems;
-          if (Array.isArray(annData[b.id]) && !annData[b.id].length) annData[b.id] = allItems.slice(0, 5);
-          renderNews(b.id); renderOffers(b.id); renderAnnounce(b.id);
-        });
-      }
-
+      // Market news
       const mktP = (async () => {
         const [r1, r2] = await Promise.all(MKT_QUERIES.map(q => fetchRSS(q)));
         const all = [...(Array.isArray(r1) ? r1 : []), ...(Array.isArray(r2) ? r2 : [])];
@@ -1783,18 +1885,15 @@
         renderMarket();
       })();
 
-      const mid = Math.ceil(BRANDS.length / 2);
-      const batch1 = BRANDS.slice(0, mid);
-      const batch2 = BRANDS.slice(mid);
-      const makeQ = bs => bs.map(b => `"${b.name}"`).join(' OR ') + ' jewellery India news';
-
+      // Each brand fetched individually — KV cache on worker prevents rate limiting
+      // Stagger requests slightly so they don't all fire simultaneously
       const brandsP = (async () => {
-        const r1 = await fetchRSS(makeQ(batch1), 30);
-        totalDone++; setProgress(totalDone, totalTasks);
-        distribute(r1, batch1);
-        const r2 = await fetchRSS(makeQ(batch2), 30);
-        totalDone++; setProgress(totalDone, totalTasks);
-        distribute(r2, batch2);
+        for (let i = 0; i < BRANDS.length; i++) {
+          const b = BRANDS[i];
+          if (i > 0) await new Promise(r => setTimeout(r, 400)); // 400ms between requests
+          await fetchBrand(b);
+          totalDone++; setProgress(totalDone, totalTasks);
+        }
       })();
 
       await Promise.all([mktP, brandsP, fetchMetalPrices()]);
@@ -1923,12 +2022,23 @@
     /* ── INIT ── */
     (function () {
       BRANDS = [...DEFAULT_BRANDS, ...loadAdded()];
-      BRANDS.forEach(b => { activeSection[b.id] = 'announce'; expanded[b.id] = false; activeCat[b.id] = 'all'; });
+      BRANDS.forEach(b => { expanded[b.id] = false; activeCat[b.id] = 'all'; });
       document.getElementById('grid').innerHTML = BRANDS.map((b, i) => buildCardHTML(b, i)).join('');
       setTimeout(maybeShowIOSHint, 2500);
       fetchAll();
     })();
   </script>
+  <footer class="jp-footer">
+    <div>
+      <span class="jp-footer-brand">JewelPulse</span>
+      <span class="jp-footer-sep">·</span>
+      <span>Crafted by <strong>Samyak Chheda</strong></span>
+      <span class="jp-footer-sep">·</span>
+      <span>© 2025 All Rights Reserved</span>
+    </div>
+    <span class="jp-footer-sub">Proprietary &amp; Confidential — Unauthorised use or distribution is prohibited</span>
+  </footer>
+
 </body>
 
 </html>
