@@ -1177,20 +1177,95 @@
 
     @media(max-width:600px) {
       main {
-        padding: 11px 10px 100px;
+        padding: 10px 8px 100px;
       }
 
       .grid {
         grid-template-columns: 1fr;
+        gap: 10px;
       }
 
-      .bnav {
-        display: block;
-      }
+      .bnav { display: block; }
 
+      /* ── Header ── */
       .hdr {
         height: 48px;
+        padding: 0 10px;
+        gap: 7px;
       }
+
+      .logo-text { font-size: 17px; }
+
+      .live-pill { display: none; } /* hide on mobile — saves space */
+
+      .btn-add {
+        padding: 5px 9px;
+        font-size: 11px;
+        gap: 3px;
+      }
+
+      /* ── Market ticker ── */
+      .ticker-head { padding: 7px 11px; }
+
+      .titem {
+        width: 190px;
+        padding: 8px 10px;
+      }
+
+      .titem-title { font-size: 11.5px; }
+
+      /* ── Metal bar ── */
+      .metal-bar { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .metal-bar::-webkit-scrollbar { display: none; }
+      .metal-item { min-width: 110px; padding: 7px 10px; flex-shrink: 0; }
+      .metal-price { font-size: 12px; }
+
+      /* ── Controls ── */
+      .controls { gap: 6px; }
+      .search-wrap input { font-size: 13px; padding: 7px 11px 7px 29px; }
+
+      /* ── Brand card ── */
+      .card-head {
+        padding: 9px 10px 8px;
+        gap: 7px;
+      }
+
+      .card-avatar { width: 30px; height: 30px; font-size: 14px; border-radius: 7px; }
+      .card-name { font-size: 14px; }
+      .card-sub { font-size: 9.5px; }
+
+      /* ── NSE row ── */
+      .nse-row {
+        gap: 6px;
+        padding: 8px 10px;
+        flex-wrap: wrap;
+      }
+
+      .nse-price { font-size: 13px; }
+      .nse-time { display: none; } /* hidden on mobile — too cramped */
+      .nse-row a[href] {
+        margin-left: 0;
+        margin-top: 1px;
+      }
+
+      /* ── News items ── */
+      .ni { padding: 8px 10px; }
+      .ni-title { font-size: 12px; line-height: 1.4; }
+      .ni-src, .ni-time { font-size: 9.5px; }
+
+      /* ── Offers link ── */
+      .brand-offers-link {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+
+      /* ── Footer ── */
+      .jp-footer {
+        padding: 14px 12px 24px;
+        font-size: 9.5px;
+      }
+
+      .jp-footer-brand { font-size: 11px; }
     }
 
     @media(min-width:900px) {
@@ -1339,7 +1414,7 @@
         id: 'kisna', name: 'KISNA', sub: 'Diamond & Gold Jewellery',
         color: '#9B1B30', avatar: '💎', nse: null, offersUrl: 'https://www.kisna.com/',
         queries: [
-          { key: 'all', label: 'All', q: 'KISNA jewellery', days: 45 },
+          { key: 'all', label: 'All', q: 'Kisna Diamond Gold jewellery', days: 45 },
           { key: 'biz', label: 'Business', q: 'KISNA jewellery business expansion India' },
           { key: 'launch', label: 'Launches', q: `KISNA jewellery new collection launch ${CY}` },
           { key: 'offer', label: 'Offers', q: 'KISNA jewellery offer discount sale India' },
