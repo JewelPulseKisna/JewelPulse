@@ -2556,7 +2556,6 @@
                 renderKisnaHeroCols(items);
                 const tsEl = document.getElementById('kisna-hero-ts');
                 if (tsEl) tsEl.textContent = 'cached · ' + new Date(ts).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-                renderKisnaHeroMarket();
                 return;
               }
             } catch { }
@@ -2570,12 +2569,10 @@
         renderKisnaHeroCols(items);
         const tsEl = document.getElementById('kisna-hero-ts');
         if (tsEl) tsEl.textContent = 'live · ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-        renderKisnaHeroMarket();
       } catch {
         const err = `<div class="ni" style="color:var(--ink-4);font-size:12px;padding:12px 13px">Could not load KISNA updates</div>`;
         const l = document.getElementById('kisna-latest'); if (l) l.innerHTML = err;
         const p = document.getElementById('kisna-press');  if (p) p.innerHTML = err;
-        renderKisnaHeroMarket();
       } finally {
         if (rico) rico.classList.remove('spin');
       }
