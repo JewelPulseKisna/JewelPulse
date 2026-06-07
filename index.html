@@ -55,6 +55,76 @@
       --r-sm: 8px;
     }
 
+    /* ══════════════════════════════════════════
+       DARK MODE — Luxurious warm-black palette
+       ══════════════════════════════════════════ */
+    body.dark {
+      --surface:   #12100E;
+      --surface-2: #1C1915;
+      --card:      #1A1714;
+      --ink:       #F0EDE2;
+      --ink-2:     #D4C9B0;
+      --ink-3:     #8A7D6A;
+      --ink-4:     #5A5248;
+      --border:    rgba(212, 160, 23, 0.18);
+      --border-2:  rgba(212, 160, 23, 0.12);
+      --gold-pale: rgba(184, 134, 11, 0.08);
+      --gold-dark: #D4A017;
+    }
+
+    /* Header — deep warm black with gold accent border */
+    body.dark header {
+      background: #0A0906;
+      border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+    }
+
+    /* Header buttons */
+    body.dark .btn-add {
+      border-color: rgba(212, 160, 23, 0.25);
+      color: #D4C9B0;
+    }
+    body.dark .btn-add:hover {
+      background: rgba(212, 160, 23, 0.08);
+      color: #F0EDE2;
+    }
+
+    /* Market ticker + metal bar */
+    body.dark .ticker-wrap {
+      background: #0E0C0A;
+    }
+    body.dark .metal-bar {
+      background: #0E0C0A;
+    }
+
+    /* Brand cards — depth + gold border */
+    body.dark .brand-card {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 160, 23, 0.10);
+    }
+
+    /* Search bar */
+    body.dark .search-wrap input {
+      background: #1A1714;
+      border: 1px solid rgba(212, 160, 23, 0.15);
+      color: #F0EDE2;
+    }
+    body.dark .search-wrap input::placeholder {
+      color: rgba(212, 201, 176, 0.35);
+    }
+
+    /* Filter pills */
+    body.dark .pill {
+      background: #1A1714;
+      border: 1px solid rgba(212, 160, 23, 0.12);
+      color: #D4C9B0;
+    }
+    body.dark .pill.on,
+    body.dark .pill.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+
     html {
       scroll-behavior: smooth;
       -webkit-tap-highlight-color: transparent;
@@ -557,6 +627,159 @@
     .btn-crefresh svg.spin {
       animation: rotate .7s linear infinite;
     }
+
+    /* COLLAPSE BUTTON */
+    .btn-collapse {
+      width: 25px;
+      height: 25px;
+      border-radius: 6px;
+      border: 1px solid var(--border-2);
+      background: var(--surface);
+      color: var(--ink-3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+      flex-shrink: 0;
+    }
+
+    .btn-collapse:hover {
+      border-color: var(--gold);
+      color: var(--gold-dark);
+      background: var(--gold-pale);
+    }
+
+    .btn-collapse:active {
+      transform: scale(.93);
+    }
+
+    /* CARD BODY — collapsible section */
+    .card-body {
+      max-height: 1200px;
+      opacity: 1;
+      overflow: hidden;
+      transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-body.collapsed {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    /* DIGEST BUTTON */
+    .btn-digest {
+      width: 25px;
+      height: 25px;
+      border-radius: 6px;
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      background: transparent;
+      color: var(--gold-l);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all .15s;
+      flex-shrink: 0;
+    }
+    .btn-digest:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+    .btn-digest:active { transform: scale(.93); }
+    @keyframes digestPulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+    .btn-digest.loading { animation: digestPulse 0.6s ease; }
+
+    /* DIGEST PANEL */
+    .digest-panel {
+      background: var(--gold-pale);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin: 0 13px 10px;
+      position: relative;
+      animation: digestFadeIn 0.25s ease;
+    }
+    @keyframes digestFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    body.dark .digest-panel {
+      background: rgba(184, 134, 11, 0.06);
+      border-color: rgba(212, 160, 23, 0.15);
+    }
+    .digest-hdr {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 2px;
+      padding-right: 22px;
+    }
+    .digest-sub {
+      font-size: 10px;
+      color: var(--ink-4);
+      margin-bottom: 8px;
+    }
+    .digest-divider {
+      height: 1px;
+      background: rgba(212, 160, 23, 0.15);
+      margin: 8px 0;
+    }
+    .digest-body {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--ink-2);
+    }
+    .digest-close {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      background: none;
+      border: none;
+      color: var(--ink-4);
+      cursor: pointer;
+      font-size: 12px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      transition: color .15s;
+      line-height: 1;
+    }
+    .digest-close:hover { color: var(--ink); }
+    .digest-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .digest-action-btn {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-2);
+      background: var(--card);
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: all .15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .digest-action-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-dark);
+    }
+    .digest-empty {
+      text-align: center;
+      padding: 10px 0;
+      color: var(--ink-4);
+      font-size: 12px;
+    }
+    .digest-empty-icon { font-size: 22px; margin-bottom: 6px; }
 
     .btn-remove {
       width: 21px;
@@ -1267,22 +1490,162 @@
 
       .jp-footer-brand { font-size: 11px; }
 
-      /* ── KISNA header logo ── */
-      .kisna-hdr img {
-        height: 20px !important;
-      }
+      /* ── KISNA header logo — hide on mobile (too wide, overlaps buttons) ── */
+      .kisna-hdr { display: none; }
 
-      /* ── Metal bar badges ── */
+      /* ── Metal bar — prevent label bleed into adjacent items ── */
       .metal-chg { display: none; }
+      .metal-item {
+        min-width: 90px;
+        max-width: 110px;
+        overflow: hidden;
+        gap: 3px;
+      }
+      .metal-label {
+        font-size: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
       .metal-price { font-size: 11.5px; }
-      .metal-label { font-size: 8px; }
-      .metal-item { min-width: 95px; gap: 5px; }
     }
 
     @media(min-width:900px) {
       main {
         padding: 18px 20px 60px;
       }
+    }
+
+    /* ════════════════════════════════════════════
+       KISNA HERO SECTION
+       ════════════════════════════════════════════ */
+    .kisna-hero {
+      width: 100%;
+      margin-bottom: 13px;
+      background: var(--card);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .kisna-hero-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, #1E1B5E, #2D2A7A, #D4A017);
+    }
+    .kisna-hero-head {
+      background: #1E1B5E;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .kisna-hero-left { display: flex; flex-direction: column; gap: 3px; }
+    .kisna-hero-logo { height: 28px; object-fit: contain; }
+    .kisna-hero-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+    .kisna-hero-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+    .kisna-hero-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .kisna-cmd-badge {
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.3);
+      color: #D4A017;
+      white-space: nowrap;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all .15s;
+    }
+    .kisna-cmd-badge:hover {
+      background: rgba(212,160,23,0.28);
+      border-color: rgba(212,160,23,0.55);
+    }
+    .kisna-cmd-badge:active { transform: scale(.95); }
+    .kisna-hero-ts { font-size: 9px; color: rgba(255,255,255,0.4); white-space: nowrap; }
+    .kisna-hero-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border-2);
+    }
+    .kisna-col { border-right: 1px solid var(--border-2); min-width: 0; }
+    .kisna-col:last-child { border-right: none; }
+    .kisna-col-hdr {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink-4);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 9px 13px;
+      border-bottom: 1px solid var(--border-2);
+      background: #F8F7FC;
+    }
+    body.dark .kisna-col-hdr { background: #1A1830; }
+    .kisna-src-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      color: #2D2A7A;
+      background: rgba(30,27,94,0.08);
+      padding: 1px 5px;
+      border-radius: 10px;
+    }
+    body.dark .kisna-src-badge { color: #9896D8; background: rgba(30,27,94,0.3); }
+    .kisna-skeleton {
+      height: 14px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      margin: 10px 13px;
+      animation: kSkel 1.2s ease-in-out infinite;
+    }
+    .kisna-skeleton + .kisna-skeleton { width: 70%; }
+    @keyframes kSkel {
+      0%, 100% { opacity: 0.7; }
+      50%       { opacity: 0.25; }
+    }
+    .kisna-thumb {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 6px;
+      float: right;
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+
+    .kisna-bottom-bar {
+      padding: 8px 16px;
+      background: rgba(30,27,94,0.04);
+      border-top: 1px solid rgba(30,27,94,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    body.dark .kisna-bottom-bar {
+      background: rgba(30,27,94,0.12);
+      border-top-color: rgba(30,27,94,0.2);
+    }
+    .kisna-bottom-bar a { text-decoration: none; transition: opacity .15s; }
+    .kisna-bottom-bar a:hover { opacity: 0.75; }
+    .kisna-offers-link { font-size: 11px; color: #2D2A7A; font-weight: 500; }
+    body.dark .kisna-offers-link { color: #9896D8; }
+    .kisna-site-link { font-size: 10px; color: var(--ink-4); }
+
+    @media(max-width:600px) {
+      .kisna-hero-cols { grid-template-columns: 1fr; }
+      .kisna-col { border-right: none; border-bottom: 1px solid var(--border-2); }
+      .kisna-col:last-child { border-bottom: none; }
+      .kisna-hero-head { padding: 10px 12px; }
+      .kisna-cmd-badge, .kisna-hero-ts { display: none; }
+      .kisna-hero-logo { height: 22px; }
+      .kisna-bottom-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
   </style>
 </head>
@@ -1303,6 +1666,7 @@
           <div class="live-dot" id="live-dot" style="background:#9A9789;animation:none"></div>
           <span id="live-txt">Ready</span>
         </div>
+        <button class="btn-add" id="theme-toggle" style="font-size:13px;padding:5px 9px;margin-right:2px" title="Toggle dark / light mode" onclick="toggleTheme()">🌙</button>
         <button class="btn-add" style="font-size:11px;padding:5px 10px;margin-right:4px;opacity:.7"
           onclick="clearCacheReload()" title="Clear cached news and reload fresh data">↺ Reset</button>
         <button class="btn-add" onclick="openModal()">＋ Add Brand</button>
@@ -1343,6 +1707,46 @@
           <div class="spinner" style="border-top-color:rgba(255,255,255,.4);border-color:rgba(255,255,255,.1)"></div>
           Loading market news…
         </div>
+      </div>
+    </div>
+
+    <!-- KISNA HERO SECTION -->
+    <div id="kisna-hero" class="kisna-hero">
+      <div class="kisna-hero-stripe"></div>
+      <div class="kisna-hero-head">
+        <div class="kisna-hero-left">
+          <img src="KISNA-logo.png" alt="KISNA" class="kisna-hero-logo"
+            onerror="this.style.display='none';document.getElementById('kisna-logo-txt').style.display='block'">
+          <div id="kisna-logo-txt" class="kisna-hero-logo-text" style="display:none">KISNA</div>
+          <div class="kisna-hero-sub">Diamond &amp; Gold Jewellery &middot; Official Intelligence Feed</div>
+        </div>
+        <div class="kisna-hero-right">
+          <button class="kisna-cmd-badge" onclick="showKisnaDigest()" title="Generate Weekly Intelligence Brief">✦ KISNA Command</button>
+          <button class="btn-crefresh" title="Refresh KISNA data" onclick="refreshKisnaHero()">
+            <svg id="kisna-hero-rico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/>
+              <path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/>
+            </svg>
+          </button>
+          <span id="kisna-hero-ts" class="kisna-hero-ts">&mdash;</span>
+        </div>
+      </div>
+      <!-- Digest panel slot: injected by showKisnaDigest() -->
+      <div id="kisna-digest-slot"></div>
+
+      <div class="kisna-hero-cols">
+        <div class="kisna-col">
+          <div class="kisna-col-hdr">📰 Latest from KISNA</div>
+          <div id="kisna-latest"><div class="kisna-skeleton"></div><div class="kisna-skeleton"></div></div>
+        </div>
+        <div class="kisna-col">
+          <div class="kisna-col-hdr">📣 Press Releases</div>
+          <div id="kisna-press"><div class="kisna-skeleton"></div><div class="kisna-skeleton"></div></div>
+        </div>
+      </div>
+      <div class="kisna-bottom-bar">
+        <a href="https://www.kisna.com/" target="_blank" rel="noopener" class="kisna-offers-link">🏷️ View All Offers &amp; Schemes &rarr;</a>
+        <a href="https://www.kisna.com/" target="_blank" rel="noopener" class="kisna-site-link">kisna.com</a>
       </div>
     </div>
 
@@ -1421,18 +1825,7 @@
     ];
 
     const DEFAULT_BRANDS = [
-      {
-        id: 'kisna', name: 'KISNA', sub: 'Diamond & Gold Jewellery',
-        color: '#9B1B30', avatar: '💎', nse: null, offersUrl: 'https://www.kisna.com/',
-        queries: [
-          { key: 'all', label: 'All', q: 'Kisna Diamond Gold jewellery', days: 45 },
-          { key: 'biz', label: 'Business', q: 'KISNA jewellery business expansion India' },
-          { key: 'launch', label: 'Launches', q: `KISNA jewellery new collection launch ${CY}` },
-          { key: 'offer', label: 'Offers', q: 'KISNA jewellery offer discount sale India' },
-          { key: 'scheme', label: 'Schemes', q: 'KISNA jewellery gold diamond scheme plan India' },
-          { key: 'collab', label: 'Collabs', q: 'KISNA jewellery celebrity ambassador partnership' },
-        ]
-      },
+
       {
         id: 'tanishq', name: 'Tanishq', sub: 'CaratLane · Titan · Zoya',
         color: '#B07A1A', avatar: 'T', nse: 'TITAN.NS', offersUrl: 'https://www.tanishq.co.in/offers',
@@ -1604,6 +1997,9 @@
         const d = await r.json();
         const gold = d.gold, silver = d.silver, usdInr = d.forex?.price || 0;
 
+        // Store for KISNA hero market pulse
+        metalData = { gold, silver, usdInr, forex: d.forex };
+
         function render(elId, usdOz, label) {
           const el = document.getElementById(elId);
           if (!el) return;
@@ -1621,6 +2017,9 @@
         render('metal-silver', silver, 'silver');
         const fe = document.getElementById('metal-forex');
         if (fe) fe.textContent = usdInr ? '₹' + usdInr.toFixed(2) : '—';
+
+        // Update KISNA hero market pulse column with fresh prices
+        // (market pulse column removed — data shown in main ticker above)
       } catch {
         document.getElementById('metal-gold').innerHTML = `<span style="font-size:11px;color:rgba(255,255,255,.3)">Unavailable</span>`;
         document.getElementById('metal-silver').innerHTML = `<span style="font-size:11px;color:rgba(255,255,255,.3)">Unavailable</span>`;
@@ -1846,6 +2245,12 @@
     </div>
     <div class="card-actions">
       <span class="card-count" id="count-${b.id}">—</span>
+      <button class="btn-digest" id="dbtn-${b.id}" title="Generate Weekly Digest" onclick="showDigest('${b.id}', '${b.name}')">&#10022;</button>
+      <button class="btn-collapse" id="cbtn-${b.id}" title="Collapse" onclick="toggleCollapse('${b.id}')">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline id="cico-${b.id}" points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
       <button class="btn-crefresh" id="rbtn-${b.id}" title="Refresh" onclick="refreshBrand('${b.id}')">
         <svg id="rico-${b.id}" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/>
@@ -1855,9 +2260,11 @@
       <button class="btn-remove" onclick="removeBrand('${b.id}')">✕</button>
     </div>
   </div>
-  <div id="nse-${b.id}"><div class="nse-ph"><div class="spinner"></div>Loading…</div></div>
-  <div id="news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
-  ${b.offersUrl ? `<a href="${b.offersUrl}" target="_blank" rel="noopener" class="brand-offers-link">🏷️ View Latest Offers</a>` : ''}
+  <div class="card-body" id="body-${b.id}">
+    <div id="nse-${b.id}"><div class="nse-ph"><div class="spinner"></div>Loading…</div></div>
+    <div id="news-${b.id}"><div class="nlist"><div class="state"><div class="spinner"></div></div></div></div>
+    ${b.offersUrl ? `<a href="${b.offersUrl}" target="_blank" rel="noopener" class="brand-offers-link">🏷️ View Latest Offers</a>` : ''}
+  </div>
 </div>`;
     }
 
@@ -1982,7 +2389,7 @@
         }
       })();
 
-      await Promise.all([mktP, brandsP, fetchMetalPrices()]);
+      await Promise.all([mktP, brandsP, fetchMetalPrices(), fetchKisnaHero()]);
       setProgress(totalTasks, totalTasks);
       setLive('live');
       setTimeout(() => setProgress(0, 1), 2500);
@@ -2098,6 +2505,342 @@
       }
     }
 
+    /* ── Theme toggle ── */
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('jp_theme', isDark ? 'dark' : 'light');
+      document.getElementById('theme-toggle').textContent = isDark ? '☀️' : '🌙';
+    }
+
+    /* Apply saved theme immediately on load */
+    (function () {
+      const saved = localStorage.getItem('jp_theme');
+      if (saved === 'dark') {
+        document.body.classList.add('dark');
+        const btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = '☀️';
+      }
+    })();
+
+    /* ── KISNA Hero ── */
+    const KISNA_HERO_TTL = 3 * 60 * 60 * 1000;
+
+    function kisnaItemHTML(item) {
+      const thumb = item.image
+        ? `<img src="${item.image}" class="kisna-thumb" loading="lazy" onerror="this.remove()" alt="">`
+        : '';
+      return `<div class="ni">
+        <div class="ni-row">
+          ${thumb}
+          <div class="ni-title"><a href="${item.url || '#'}" target="_blank" rel="noopener">${item.title}</a></div>
+        </div>
+        <div class="ni-meta">
+          <span class="kisna-src-badge">Kisna Official</span>
+          ${item.publishedAt ? `<span class="ni-dot"></span><span class="ni-time">${timeAgo(item.publishedAt)}</span>` : ''}
+        </div>
+      </div>`;
+    }
+
+
+    async function fetchKisnaHero(bustCache = false) {
+      const rico = document.getElementById('kisna-hero-rico');
+      if (rico) rico.classList.add('spin');
+      try {
+        // Try local cache first
+        if (!bustCache) {
+          const raw = localStorage.getItem('jp_kisna_hero');
+          if (raw) {
+            try {
+              const { items, ts } = JSON.parse(raw);
+              if (Date.now() - ts < KISNA_HERO_TTL) {
+                renderKisnaHeroCols(items);
+                const tsEl = document.getElementById('kisna-hero-ts');
+                if (tsEl) tsEl.textContent = 'cached · ' + new Date(ts).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                renderKisnaHeroMarket();
+                return;
+              }
+            } catch { }
+          }
+        }
+        const r = await fetchWithTimeout(`${WORKER_URL}?type=kisna`, 14000);
+        if (!r.ok) throw new Error('Worker error ' + r.status);
+        const data = await r.json();
+        const items = Array.isArray(data.articles) ? data.articles : [];
+        localStorage.setItem('jp_kisna_hero', JSON.stringify({ items, ts: Date.now() }));
+        renderKisnaHeroCols(items);
+        const tsEl = document.getElementById('kisna-hero-ts');
+        if (tsEl) tsEl.textContent = 'live · ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+        renderKisnaHeroMarket();
+      } catch {
+        const err = `<div class="ni" style="color:var(--ink-4);font-size:12px;padding:12px 13px">Could not load KISNA updates</div>`;
+        const l = document.getElementById('kisna-latest'); if (l) l.innerHTML = err;
+        const p = document.getElementById('kisna-press');  if (p) p.innerHTML = err;
+        renderKisnaHeroMarket();
+      } finally {
+        if (rico) rico.classList.remove('spin');
+      }
+    }
+
+    function renderKisnaHeroCols(items) {
+      const latest  = items.slice(0, 4);
+      const press   = items.filter(i => i.type === 'press').slice(0, 4);
+      const lEl = document.getElementById('kisna-latest');
+      const pEl = document.getElementById('kisna-press');
+      if (lEl) lEl.innerHTML = latest.length ? latest.map(kisnaItemHTML).join('') :
+        `<div style="padding:12px 13px;font-size:12px;color:var(--ink-4)">No items yet</div>`;
+      if (pEl) {
+        const pressHTML = press.map(kisnaItemHTML).join('');
+        const extra = press.length < 4
+          ? `<div style="padding:8px 13px;font-size:11px;color:var(--ink-4)">${press.length} press release${press.length !== 1 ? 's' : ''} this period</div>`
+          : '';
+        pEl.innerHTML = pressHTML + extra || `<div style="padding:12px 13px;font-size:12px;color:var(--ink-4)">No press releases found</div>`;
+      }
+    }
+
+    function refreshKisnaHero() {
+      localStorage.removeItem('jp_kisna_hero');
+      fetchKisnaHero(true);
+    }
+
+    /* ── KISNA Command — Weekly Digest ── */
+    function buildKisnaDigest() {
+      let items = [];
+      try {
+        const raw = localStorage.getItem('jp_kisna_hero');
+        if (raw) { const p = JSON.parse(raw); items = p.items || []; }
+      } catch { }
+      if (items.length < 2) return null;
+      const sorted = [...items]
+        .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
+        .slice(0, 12);
+      const cats = { biz: null, offer: null, launch: null, collab: null };
+      for (const a of sorted) {
+        const c = digestCat(a.title);
+        if (c && cats[c] === null) cats[c] = a;
+      }
+      const oldest = sorted[sorted.length - 1];
+      const newest = sorted[0];
+      const dateRange = fmtDigestDate(oldest.publishedAt) + ' – ' + fmtDigestDate(newest.publishedAt);
+      return { topStory: sorted[0], ...cats, totalCount: items.length, dateRange };
+    }
+
+    function showKisnaDigest() {
+      const slot = document.getElementById('kisna-digest-slot');
+      if (!slot) return;
+
+      // If panel already open, close it
+      if (slot.firstElementChild) { closeKisnaDigest(); return; }
+
+      // Check data availability
+      const raw = localStorage.getItem('jp_kisna_hero');
+      if (!raw) {
+        slot.innerHTML = `<div class="digest-panel" style="margin:0 0 0;border-radius:0;border-left:none;border-right:none;border-top:none">
+          <button class="digest-close" onclick="closeKisnaDigest()">&#10005;</button>
+          <div class="digest-empty">Please refresh KISNA data first — click the ↺ button above.</div>
+        </div>`;
+        return;
+      }
+
+      const d = buildKisnaDigest();
+      const close = `<button class="digest-close" onclick="closeKisnaDigest()">&#10005;</button>`;
+
+      if (!d) {
+        slot.innerHTML = `<div class="digest-panel" style="margin:0;border-radius:0;border-left:none;border-right:none;border-top:none">
+          ${close}
+          <div class="digest-empty"><div class="digest-empty-icon">📰</div>Not enough KISNA articles to generate a digest. Try refreshing.</div>
+        </div>`;
+        return;
+      }
+
+      const line = (em, lbl, art, fallback) =>
+        `<div><strong>${em} ${lbl}:</strong> ${art ? trunc80(art.title) : fallback}</div>`;
+
+      slot.innerHTML = `<div class="digest-panel" id="kisna-digest-panel" style="margin:0;border-radius:0;border-left:none;border-right:none;border-top:none">
+        ${close}
+        <div class="digest-hdr">KISNA Diamond &amp; Gold · Weekly Intelligence Brief</div>
+        <div class="digest-sub">${d.dateRange} · ${d.totalCount} articles tracked · Official Source</div>
+        <div class="digest-divider"></div>
+        <div class="digest-body">
+          ${line('🔥', 'TOP STORY', d.topStory, '')}
+          ${line('📈', 'BUSINESS', d.biz, 'No major business news this period')}
+          ${line('🏷', 'OFFERS', d.offer, 'No new offers detected')}
+          ${line('🚀', 'LAUNCHES', d.launch, 'No launches this period')}
+          ${line('🤝', 'CAMPAIGNS', d.collab, 'No campaign news this period')}
+          <div>📊 <strong>COVERAGE:</strong> ${d.totalCount} stories tracked from official KISNA channels</div>
+        </div>
+        <div class="digest-actions">
+          <button class="digest-action-btn" id="copy-kisna-digest" onclick="copyKisnaDigest()">📋 Copy for WhatsApp</button>
+          <button class="digest-action-btn" onclick="showKisnaDigest()">↺ Refresh</button>
+        </div>
+      </div>`;
+    }
+
+    function closeKisnaDigest() {
+      const slot = document.getElementById('kisna-digest-slot');
+      if (slot) slot.innerHTML = '';
+    }
+
+    function copyKisnaDigest() {
+      const d = buildKisnaDigest();
+      if (!d) return;
+      const t = (a, fb) => a ? trunc80(a.title) : fb;
+      const text = `*KISNA Diamond & Gold — Weekly Intelligence Brief*\n_${d.dateRange}_\n\n🔥 *TOP STORY:* ${t(d.topStory, '')}\n📈 *BUSINESS:* ${t(d.biz, 'No major business news this period')}\n🏷 *OFFERS:* ${t(d.offer, 'No new offers detected')}\n🚀 *LAUNCHES:* ${t(d.launch, 'No launches this period')}\n🤝 *CAMPAIGNS:* ${t(d.collab, 'No campaign news this period')}\n\n📊 ${d.totalCount} stories tracked from official KISNA channels\n_via JewelPulse_`;
+      const doBtn = () => {
+        const b = document.getElementById('copy-kisna-digest');
+        if (b) { b.textContent = '✓ Copied!'; setTimeout(() => { b.textContent = '📋 Copy for WhatsApp'; }, 2000); }
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(doBtn).catch(() => { fallbackCopy(text); doBtn(); });
+      } else { fallbackCopy(text); doBtn(); }
+    }
+
+    /* ── Weekly Digest ── */
+    const DIGEST_TTL = 6 * 60 * 60 * 1000;
+
+    function digestCat(title) {
+      const t = title.toLowerCase();
+      if (/revenue|profit|ipo|fund|expan|financial|result|quarter|crore|lakh|store|open|appoint|acqui|merger/.test(t)) return 'biz';
+      if (/offer|discount|sale|cashback|scheme|program|exchange|emi|loyalty|reward|voucher|coupon|gift/.test(t)) return 'offer';
+      if (/launch|unveil|debut|introduc|new collection|release/.test(t)) return 'launch';
+      if (/partner|collab|ambassador|celebrity|endors|campaign/.test(t)) return 'collab';
+      if (/award|winner|recogni|honour/.test(t)) return 'award';
+      return null;
+    }
+
+    function trunc80(s) { return s && s.length > 80 ? s.slice(0, 80).trimEnd() + '…' : (s || ''); }
+
+    function fmtDigestDate(iso) {
+      try { return new Date(iso).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }); } catch { return ''; }
+    }
+
+    function buildDigest(brandId) {
+      const arts = (results[brandId] || {})['all'];
+      if (!Array.isArray(arts) || arts.length < 2) return null;
+      const sorted = [...arts].sort((a, b) =>
+        new Date(b.publishedAt || b.pubDate || 0) - new Date(a.publishedAt || a.pubDate || 0)
+      ).slice(0, 10);
+      const cats = { biz: null, offer: null, launch: null, collab: null };
+      for (const a of sorted) {
+        const c = digestCat(a.title);
+        if (c && cats[c] === null) cats[c] = a;
+      }
+      const oldest = sorted[sorted.length - 1];
+      const newest = sorted[0];
+      const dateRange = fmtDigestDate(oldest.publishedAt || oldest.pubDate) + ' – ' + fmtDigestDate(newest.publishedAt || newest.pubDate);
+      return { topStory: sorted[0], ...cats, totalCount: arts.length, dateRange };
+    }
+
+    function digestPanelHTML(brandId, brandName, d) {
+      const close = `<button class="digest-close" onclick="closeDigest('${brandId}')">&#10005;</button>`;
+      if (!d) return `<div class="digest-panel" id="digest-panel-${brandId}">${close}<div class="digest-empty"><div class="digest-empty-icon">📰</div>Not enough news this week to generate a digest for <strong>${brandName}</strong></div></div>`;
+      const line = (em, lbl, art, fallback) =>
+        `<div><strong>${em} ${lbl}:</strong> ${art ? trunc80(art.title) : fallback}</div>`;
+      return `<div class="digest-panel" id="digest-panel-${brandId}">
+        ${close}
+        <div class="digest-hdr">${brandName} · Weekly Digest</div>
+        <div class="digest-sub">${d.dateRange} · ${d.totalCount} stories tracked</div>
+        <div class="digest-divider"></div>
+        <div class="digest-body">
+          ${line('🔥', 'TOP STORY', d.topStory, '')}
+          ${line('📈', 'BUSINESS', d.biz, 'No major business news this week')}
+          ${line('🏷', 'OFFERS', d.offer, 'No new offers detected')}
+          ${line('🚀', 'LAUNCHES', d.launch, 'No launches this week')}
+          ${line('🤝', 'CAMPAIGNS', d.collab, 'No campaign news this week')}
+          <div>📊 <strong>COVERAGE:</strong> ${d.totalCount} stories tracked across all categories</div>
+        </div>
+        <div class="digest-actions">
+          <button class="digest-action-btn" id="copy-digest-${brandId}" onclick="copyDigest('${brandId}','${brandName}')">&#128203; Copy for WhatsApp</button>
+          <button class="digest-action-btn" onclick="showDigest('${brandId}','${brandName}')">↺ Refresh</button>
+        </div>
+      </div>`;
+    }
+
+    function injectDigestPanel(brandId, html) {
+      const old = document.getElementById('digest-panel-' + brandId);
+      if (old) old.remove();
+      const nseDiv = document.getElementById('nse-' + brandId);
+      if (!nseDiv) return;
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      nseDiv.parentNode.insertBefore(tmp.firstElementChild, nseDiv);
+    }
+
+    function showDigest(brandId, brandName) {
+      const btn = document.getElementById('dbtn-' + brandId);
+      if (btn) { btn.classList.add('loading'); setTimeout(() => btn.classList.remove('loading'), 600); }
+      if (!results[brandId]) {
+        injectDigestPanel(brandId, `<div class="digest-panel" id="digest-panel-${brandId}"><button class="digest-close" onclick="closeDigest('${brandId}')">&#10005;</button><div class="digest-empty">Please wait for news to finish loading</div></div>`);
+        return;
+      }
+      const d = buildDigest(brandId);
+      injectDigestPanel(brandId, digestPanelHTML(brandId, brandName, d));
+      if (d) localStorage.setItem('jp_digest_' + brandId, JSON.stringify({ d, brandName, ts: Date.now() }));
+    }
+
+    function closeDigest(brandId) {
+      const p = document.getElementById('digest-panel-' + brandId);
+      if (p) p.remove();
+      localStorage.removeItem('jp_digest_' + brandId);
+    }
+
+    function copyDigest(brandId, brandName) {
+      const d = buildDigest(brandId);
+      if (!d) return;
+      const t = (a, fb) => a ? trunc80(a.title) : fb;
+      const text = `*${brandName} Weekly Intelligence Brief*\n_${d.dateRange}_\n\n🔥 *TOP STORY:* ${t(d.topStory, '')}\n📈 *BUSINESS:* ${t(d.biz, 'No major business news this week')}\n🏷 *OFFERS:* ${t(d.offer, 'No new offers detected')}\n🚀 *LAUNCHES:* ${t(d.launch, 'No launches this week')}\n🤝 *CAMPAIGNS:* ${t(d.collab, 'No campaign news this week')}\n\n📊 ${d.totalCount} stories tracked\n_via JewelPulse_`;
+      const doBtn = () => {
+        const b = document.getElementById('copy-digest-' + brandId);
+        if (b) { b.textContent = '✓ Copied!'; setTimeout(() => { b.textContent = '📋 Copy for WhatsApp'; }, 2000); }
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(doBtn).catch(() => { fallbackCopy(text); doBtn(); });
+      } else { fallbackCopy(text); doBtn(); }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch { }
+      document.body.removeChild(ta);
+    }
+
+    function restoreDigests() {
+      BRANDS.forEach(b => {
+        const raw = localStorage.getItem('jp_digest_' + b.id);
+        if (!raw) return;
+        try {
+          const { d, brandName, ts } = JSON.parse(raw);
+          if (Date.now() - ts < DIGEST_TTL) {
+            injectDigestPanel(b.id, digestPanelHTML(b.id, brandName, d));
+          } else {
+            localStorage.removeItem('jp_digest_' + b.id);
+          }
+        } catch { localStorage.removeItem('jp_digest_' + b.id); }
+      });
+    }
+
+    /* ── Collapse / expand brand card ── */
+    function toggleCollapse(id) {
+      const body = document.getElementById('body-' + id);
+      const ico  = document.getElementById('cico-' + id);
+      if (!body) return;
+      const isNowCollapsed = body.classList.toggle('collapsed');
+      localStorage.setItem('jp_collapsed_' + id, isNowCollapsed ? '1' : '0');
+      if (ico) ico.setAttribute('points', isNowCollapsed ? '6 9 12 15 18 9' : '18 15 12 9 6 15');
+    }
+
+    function restoreCollapseState() {
+      BRANDS.forEach(b => {
+        if (localStorage.getItem('jp_collapsed_' + b.id) === '1') {
+          const body = document.getElementById('body-' + b.id);
+          const ico  = document.getElementById('cico-' + b.id);
+          if (body) body.classList.add('collapsed');
+          if (ico)  ico.setAttribute('points', '6 9 12 15 18 9');
+        }
+      });
+    }
+
     function clearCacheReload() {
       try {
         Object.keys(localStorage).filter(k => k.startsWith(CACHE_NS)).forEach(k => localStorage.removeItem(k));
@@ -2110,6 +2853,9 @@
       BRANDS = [...DEFAULT_BRANDS, ...loadAdded()];
       BRANDS.forEach(b => { expanded[b.id] = false; activeCat[b.id] = 'all'; });
       document.getElementById('grid').innerHTML = BRANDS.map((b, i) => buildCardHTML(b, i)).join('');
+      restoreCollapseState();
+      restoreDigests();
+      fetchKisnaHero(); // load hero from cache instantly if available
       setTimeout(maybeShowIOSHint, 2500);
       fetchAll();
     })();
